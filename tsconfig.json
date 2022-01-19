@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        // 这样就可以对 `this` 上的数据属性进行更严格的推断`
+        "strict": true,
+        "noImplicitAny": true,//不能使用any
+        "noImplicitThis": true,//不能使用this
+        "strictNullChecks": true,//不能使用null
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,//引入json模块
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "lib": ["esnext","dom"],
+        "types": ["vite/client"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*":["src/*"]
+        }
+    },
+    "include": ["src/**/*.ts","src/**/*.d.ts","src/**/*.vue"]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mysdk-client",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@types/highcharts": "^7.0.0",
+    "ant-design-vue": "^3.0.0-alpha.14",
+    "echarts": "^5.2.2",
+    "highcharts": "^9.2.2",
+    "vue": "^3.2.6",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.6.1",
+    "@vue/compiler-sfc": "^3.2.6",
+    "eslint-plugin-vue": "^7.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "vite": "^2.5.4"
+  }
+}
