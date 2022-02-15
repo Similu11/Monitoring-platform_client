@@ -65,7 +65,6 @@ export default {
         let selectedKeys = ref<Array<string>>([]);
         let currenttabcomponent = ref<string>('');
         function closeDrawer(params: string) {
-            console.log(zz);
             fetch('/api/reloadModelVsrsion',{method: 'post',body:mod.value}).then(res => res.json()).then(data => {
                 if(data.status == 200){
                      visible.value = false;
