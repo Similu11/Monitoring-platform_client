@@ -94,6 +94,7 @@ export default {
       fileVersion: []
     });
     const model = inject('model');
+    let spinTag = inject('spinTag');
     let version = ref<string>('');
     let insert = ref<string>('');
     let outPut = ref<string>('');
@@ -108,15 +109,16 @@ export default {
       authorization: 'authorization-text',
     });
     onMounted(() => {//dom首次渲染完成之后，才能获取到真实的dom
-      fetch('http://localhost:8852/getSourceMapVersion').then(res => res.json()).then(data => {
+      fetch('/api/getSourceMapVersion').then(res => res.json()).then(data => {
+        spinTag.value = false;
         modeArr.fileVersion = data.fileVersion;
         toRefs(modeArr);
       })
     });
     function ourMap_InsertStart() {
       if (insert.value != '' && version.value != '') {
-        //{"scriptURI":"http://127.0.0.1:5500/examples/sourcemap/dist/main.js","lineNo":1,"columnNo":84}
-        fetch('http://localhost:8852/analysisFile', {
+        //{"scriptURI":"http://127.0.0.1:5500/examples/sourcemap/dist/main.js","lineno":1,"colno":84}
+        fetch('/api/analysisFile', {
           method: 'post',
           body: JSON.stringify({
             errFileInfo:insert.value,
@@ -181,7 +183,7 @@ export default {
       }
       fd.append('version', file_version.value);
       fd.append('model', model._value);
-      fetch('http://localhost:8852/uploadSour', {
+      fetch('/api/uploadSour', {
         method: 'post',
         body: fd
       }).then(res => res.json()).then(data => {
@@ -191,7 +193,7 @@ export default {
         fileLists.result = [];
         file_version.value = '';
         toRefs(fileLists);
-        fetch('http://localhost:8852/getSourceMapVersion').then(res => res.json()).then(data => {
+        fetch('/api/getSourceMapVersion').then(res => res.json()).then(data => {
           modeArr.fileVersion = data.fileVersion;
           toRefs(modeArr);
         })
